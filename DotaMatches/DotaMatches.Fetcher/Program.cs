@@ -54,26 +54,25 @@ namespace DotaMatches.Fetcher
 
         static void PrintMatchResult(Match m)
         {
-            Console.WriteLine("Results for match {0}: ", m.Id);
-            Console.WriteLine("\tWinning team {0}.", m.WinningTeam);
+            Console.WriteLine("Match {0}: ", m.Id);
 
-            Console.WriteLine("\t{0}\t{1}\tK\tD\tA", "name".PadRight(Program.NameColumnLength), "hero".PadRight(Program.HeroColumnLength));
-            Console.WriteLine("\tRadiant players: ");
-            Console.WriteLine("------------------------------------------------------------------------");
+            Console.WriteLine("\n\t{0}\t{1}\tK\tD\tA", "Radiant".PadRight(Program.NameColumnLength), "".PadRight(Program.HeroColumnLength));
+            Console.WriteLine("\t----------------------------------------------------------------");
             foreach (var p in m.Players.Where(p => p.TeamName == TeamName.Radiant).OrderBy(p => p.Slot))
             {
                 Program.PrintPlayer(p);
             }
 
-            Console.WriteLine();
-            Console.WriteLine("\tDire players: ");
-
-            //Console.WriteLine("\t{0}\t{1}\tK\tD\tA", "name".PadRight(Program.NameColumnLength), "hero".PadRight(Program.HeroColumnLength));
-            Console.WriteLine("------------------------------------------------------------------------");
+            Console.WriteLine("\n\t{0}\t{1}\tK\tD\tA", "Dire".PadRight(Program.NameColumnLength), "".PadRight(Program.HeroColumnLength));
+            Console.WriteLine("\t----------------------------------------------------------------");
             foreach (var p in m.Players.Where(p => p.TeamName == TeamName.Dire).OrderBy(p => p.Slot))
             {
                 Program.PrintPlayer(p);
             }
+
+            Console.WriteLine("\n\t{0} Victory", m.WinningTeam);
+            Console.WriteLine("\n\tReplay URL: {0}", m.ReplayUrl);
+            Console.WriteLine();
         }
 
         static void Main(string[] args)
@@ -123,8 +122,6 @@ namespace DotaMatches.Fetcher
                         default:
                             break;
                     }
-
-                    Console.WriteLine("\n");
                 }
             }
             catch (Exception e)

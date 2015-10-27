@@ -35,5 +35,12 @@ namespace DotaMatches
         public int HumanPlayerCount { get; set; }
         public int LeagueId { get; set; }
 
+        public String ReplayUrl
+        {
+            get
+            {
+                return String.Format("http://replay{0}.valve.net/570/{1}_{2}.dem.bz2", Cluster, Id, ReplaySalt);
+            }
+        }
     }
 }
