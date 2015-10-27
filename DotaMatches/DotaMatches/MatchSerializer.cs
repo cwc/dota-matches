@@ -207,17 +207,7 @@ namespace DotaMatches
                 Players = new List<Player>(),
             };
 
-            int curIdx = 9;
-
-            curIdx = MatchSerializer.FindValue(8, bytes, curIdx).Value + 1;
-            while (bytes[curIdx + 1] != 16)
-            {
-                curIdx = MatchSerializer.FindValue(8, bytes, curIdx).Value + 1;
-            }
-
-            match.Season = bytes[curIdx];
-
-            curIdx++;
+            int curIdx = 22; // Skip to parseable data
 
             MatchSerializer.ValidateField(bytes, ref curIdx, 16);
 
