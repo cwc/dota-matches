@@ -34,9 +34,11 @@ namespace DotaMatches.Fetcher
 
         static void PrintPlayer(Player p)
         {
+            var name = p.Name ?? "Bot";
+
             StringBuilder sb = new StringBuilder();
             sb.Append("\t");
-            sb.Append(p.Name.Length > Program.NameColumnLength ? p.Name.Substring(0, Program.NameColumnLength) : p.Name.PadRight(Program.NameColumnLength));
+            sb.Append(name.Length > Program.NameColumnLength ? name.Substring(0, Program.NameColumnLength) : name.PadRight(Program.NameColumnLength));
             sb.Append("\t");
             var hero = ((Hero)p.HeroId).ToString();
             sb.Append(hero.Length > Program.HeroColumnLength ? hero.Substring(0, Program.HeroColumnLength) : hero.PadRight(Program.HeroColumnLength));
