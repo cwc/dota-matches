@@ -89,7 +89,7 @@ namespace DotaMatches.Fetcher
             }
             else
             {
-                line = args[0];
+                line = String.Join(" ", args);
             }
 
             var matchIds = Program.ReadInput(line);
