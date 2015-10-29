@@ -62,7 +62,7 @@
       <AdditionalDependencies>valvelib\steam_api.lib;valvelib\steam.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy valvedll\steam_api.dll $(TargetDir) /B /Y</Command>
+      <Command>copy valvedll\* $(TargetDir) /B /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
